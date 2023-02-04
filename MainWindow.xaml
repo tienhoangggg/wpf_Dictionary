@@ -1,0 +1,40 @@
+﻿<Window x:Class="learnVocabulary.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:learnVocabulary"
+        xmlns:uc="clr-namespace:learnVocabulary.ResourceUserControl"
+        mc:Ignorable="d"
+        Name="mainWindow"
+        WindowStyle="None"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DockPanel>
+                <Grid DockPanel.Dock="Left" Name="Menu" Visibility="Collapsed">
+                    <uc:MenuUC></uc:MenuUC>
+                </Grid>
+                <Grid Name="addVocabulary" Visibility="Collapsed">
+                    <uc:addVocabularyUC></uc:addVocabularyUC>
+                </Grid>
+                <Grid Name="learn" Visibility="Collapsed">
+                    <uc:learnUC></uc:learnUC>
+                </Grid>
+                <Grid Name="dictionary">
+                    <uc:dictionaryUC></uc:dictionaryUC>
+                </Grid>
+                <Grid Name="addUnitTopic" Visibility="Collapsed">
+                    <uc:defineUC></uc:defineUC>
+                </Grid>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</Window>
