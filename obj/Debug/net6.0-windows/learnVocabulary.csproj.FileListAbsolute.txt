@@ -34,10 +34,8 @@ C:\Users\hoang\source\repos\learnVocabulary\learnVocabulary\bin\Debug\net6.0-win
 C:\Users\hoang\source\repos\learnVocabulary\learnVocabulary\obj\Debug\net6.0-windows\ResourceUserControl\MenuUC.g.cs
 C:\Users\hoang\source\repos\learnVocabulary\learnVocabulary\obj\Debug\net6.0-windows\ResourceUserControl\MenuUC.baml
 C:\Users\hoang\source\repos\learnVocabulary\learnVocabulary\obj\Debug\net6.0-windows\ResourceUserControl\addVocabularyUC.g.cs
-C:\Users\hoang\source\repos\learnVocabulary\learnVocabulary\obj\Debug\net6.0-windows\ResourceUserControl\dictionaryUC.g.cs
 C:\Users\hoang\source\repos\learnVocabulary\learnVocabulary\obj\Debug\net6.0-windows\ResourceUserControl\learnUC.g.cs
 C:\Users\hoang\source\repos\learnVocabulary\learnVocabulary\obj\Debug\net6.0-windows\ResourceUserControl\addVocabularyUC.baml
-C:\Users\hoang\source\repos\learnVocabulary\learnVocabulary\obj\Debug\net6.0-windows\ResourceUserControl\dictionaryUC.baml
 C:\Users\hoang\source\repos\learnVocabulary\learnVocabulary\obj\Debug\net6.0-windows\ResourceUserControl\learnUC.baml
 C:\Users\hoang\source\repos\learnVocabulary\learnVocabulary\bin\Debug\net6.0-windows\Google.Api.CommonProtos.dll
 C:\Users\hoang\source\repos\learnVocabulary\learnVocabulary\bin\Debug\net6.0-windows\Google.Api.Gax.dll

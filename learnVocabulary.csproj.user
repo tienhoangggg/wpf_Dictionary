@@ -10,9 +10,6 @@
     <Compile Update="ResourceUserControl\addVocabularyUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="ResourceUserControl\dictionaryUC.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="ResourceUserControl\learnUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,9 +22,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ResourceUserControl\addVocabularyUC.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="ResourceUserControl\dictionaryUC.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ResourceUserControl\learnUC.xaml">

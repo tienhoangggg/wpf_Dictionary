@@ -51,7 +51,7 @@ namespace learnVocabulary.model
         }
         public void addUnitTopic(string unit, string topic)
         {
-                    db.Collection(unit).Document(topic).SetAsync(new Dictionary<string, string>());
+            db.Collection(unit).Document(topic).SetAsync(new Dictionary<string, string>()).Wait();
 
         }
         public Dictionary<string,string> getVocabularys(string unit, string topic)
@@ -68,17 +68,50 @@ namespace learnVocabulary.model
                 return new Dictionary<string, Dictionary<string, string>>();
 
         }
-        public void addVocabulary(string unit, string topic, string vocab, string level, string define)
+        public Task<string> addVocabulary(string unit, string topic, string vocab, string level, string define)
         {
+            Task<string> t = new Task<string>(() =>
+            {
                 Dictionary<string, string> vocabularys = getVocabularys(unit, topic);
                 Dictionary<string, Dictionary<string, string>> detailVocabulary = getDetailVocabulary(vocab);
                 Dictionary<string, string> detail = new Dictionary<string, string>();
                 detail.Add("level", level);
                 detail.Add("define", define);
-                vocabularys.Add(vocab, detailVocabulary.Count.ToString());
-                db.Collection(unit).Document(topic).SetAsync(vocabularys);
-                detailVocabulary.Add(detailVocabulary.Count.ToString(), detail);
+                string index;
+                if (unit != "" && topic != "")
+                {
+                    vocabularys.Add(vocab, unit + "#######" + topic);
+                    db.Collection(unit).Document(topic).SetAsync(vocabularys);
+                    detailVocabulary.Add(unit + "#######" + topic, detail);
+                    index = unit + "#######" + topic;
+                }
+                else
+                {
+                    index = "#######" + DateTime.UtcNow.ToString();
+                    detailVocabulary.Add(index, detail);
+                }
                 db.Collection("#######").Document(vocab).SetAsync(detailVocabulary);
+                return index;
+            });
+            t.Start();
+            return t;
+        }
+        public Task removeVocab(string vocab, string index)
+        {
+            Task t = Task.Run(() =>
+            {
+                Dictionary<string, Dictionary<string, string>> detailVocabulary = getDetailVocabulary(vocab);
+                detailVocabulary.Remove(index);
+                db.Collection("#######").Document(vocab).SetAsync(detailVocabulary);
+                if (index.Substring(0, 7) != "#######")
+                {
+                    string[] unitTopic = index.Split(new string[] { "#######" }, StringSplitOptions.None);
+                    Dictionary<string, string> vocabularys = getVocabularys(unitTopic[0], unitTopic[1]);
+                    vocabularys.Remove(vocab);
+                    db.Collection(unitTopic[0]).Document(unitTopic[1]).SetAsync(vocabularys);
+                }
+            });
+            return t;
         }
     }
 }

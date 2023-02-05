@@ -21,7 +21,7 @@ namespace learnVocabulary.ViewModel
         public ICommand refresh { get; set; }
         #endregion
         private firebase fb = firebase.getFirebase();
-        #region base value
+        #region property
         private ArrayList _units;
         private ArrayList _topics;
         private ArrayList _levels;
@@ -36,52 +36,52 @@ namespace learnVocabulary.ViewModel
         public ArrayList units
         {
             get { return _units; }
-            set { _units = value; OnPropertyChanged("units"); }
+            set { _units = value; OnPropertyChanged(nameof(units)); }
         }
         public ArrayList topics
         {
             get { return _topics; }
-            set { _topics = value; OnPropertyChanged("topics"); }
+            set { _topics = value; OnPropertyChanged(nameof(topics)); }
         }
         public ArrayList levels
         {
             get { return _levels; }
-            set { _levels = value; OnPropertyChanged("levels"); }
+            set { _levels = value; OnPropertyChanged(nameof(levels)); }
         }
         public string cbUnitItem
         {
             get { return _cbUnitItem; }
-            set { _cbUnitItem = value; OnPropertyChanged("cbUnitItem"); topics = fb.getTopics(cbUnitItem); }
+            set { _cbUnitItem = value; OnPropertyChanged(nameof(cbUnitItem)); topics = fb.getTopics(cbUnitItem); }
         }
         public string txtUnitItem
         {
             get { return _txtUnitItem; }
-            set { _txtUnitItem = value; OnPropertyChanged("txtUnitItem"); }
+            set { _txtUnitItem = value; OnPropertyChanged(nameof(txtUnitItem)); }
         }
         public string cbTopicItem
         {
             get { return _cbTopicItem; }
-            set { _cbTopicItem = value; OnPropertyChanged("cbTopicItem"); }
+            set { _cbTopicItem = value; OnPropertyChanged(nameof(cbTopicItem)); }
         }
         public string txtTopicItem
         {
             get { return _txtTopicItem; }
-            set { _txtTopicItem = value; OnPropertyChanged("txtTopicItem"); }
+            set { _txtTopicItem = value; OnPropertyChanged(nameof(txtTopicItem)); }
         }
         public string cbLevelItem
         {
             get { return _cbLevelItem; }
-            set { _cbLevelItem = value; OnPropertyChanged("cbLevelItem"); }
+            set { _cbLevelItem = value; OnPropertyChanged(nameof(cbLevelItem)); }
         }
         public string txtVocabularyItem
         {
             get { return _txtVocabularyItem; }
-            set { _txtVocabularyItem = value; OnPropertyChanged("txtVocabularyItem"); }
+            set { _txtVocabularyItem = value; OnPropertyChanged(nameof(txtVocabularyItem)); }
         }
         public string txtDefineItem
         {
             get { return _txtDefineItem; }
-            set { _txtDefineItem = value; OnPropertyChanged("txtDefineItem"); }
+            set { _txtDefineItem = value; OnPropertyChanged(nameof(txtDefineItem)); }
         }
         public addVocabularyViewModel()
         {
@@ -132,7 +132,7 @@ namespace learnVocabulary.ViewModel
                 }
             }
         }
-        private void sendCommand(UserControl w)
+        private async void sendCommand(UserControl w)
         {
             ComboBox cbUnit = w.FindName("cbUnit") as ComboBox;
             ComboBox cbTopic = w.FindName("cbTopic") as ComboBox;
@@ -159,7 +159,7 @@ namespace learnVocabulary.ViewModel
                 {
                     fb.addUnitTopic(unit, topic);
                 }
-                fb.addVocabulary(unit, topic, txtVocabularyItem, cbLevelItem, txtDefineItem);
+                await fb.addVocabulary(unit, topic, txtVocabularyItem, cbLevelItem, txtDefineItem);
                 refreshCommand();
             }
         }

@@ -14,9 +14,8 @@ namespace learnVocabulary.ViewModel
     {
         #region commands
         public ICommand addVocabulary { get; set; }
-        public ICommand dictionary { get; set; }
+        public ICommand define { get; set; }
         public ICommand learn { get; set; }
-        public ICommand addUnitTopic { get; set; }
         #endregion
         public MenuViewModel()
         {
@@ -32,15 +31,15 @@ namespace learnVocabulary.ViewModel
                 }
             }
             );
-            dictionary = new RelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) =>
+            define = new RelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) =>
             {
                 FrameworkElement window = GetWindowParent(p);
                 var w = window as Window;
                 if (w != null)
                 {
                     closeAllGrid(w);
-                    Grid dic = w.FindName("dictionary") as Grid;
-                        dic.Visibility = Visibility.Visible;
+                    Grid def = w.FindName("define") as Grid;
+                        def.Visibility = Visibility.Visible;
                 }
             }
             );
@@ -56,29 +55,15 @@ namespace learnVocabulary.ViewModel
                 }
             }
             );
-            addUnitTopic = new RelayCommand<UserControl>((p) => { return p == null ? false : true; }, (p) =>
-            {
-                FrameworkElement window = GetWindowParent(p);
-                var w = window as Window;
-                if (w != null)
-                {
-                    closeAllGrid(w);
-                    Grid addUnitTopicG = w.FindName("addUnitTopic") as Grid;
-                        addUnitTopicG.Visibility = Visibility.Visible;
-                }
-            }
-            );
         }
         private void closeAllGrid(Window w)
         {
             Grid addVocab = w.FindName("addVocabulary") as Grid;
-            Grid addUnitTopicG = w.FindName("addUnitTopic") as Grid;
-            Grid dic = w.FindName("dictionary") as Grid;
+            Grid def = w.FindName("define") as Grid;
             Grid learnG = w.FindName("learn") as Grid;
             addVocab.Visibility = Visibility.Collapsed;
-            dic.Visibility = Visibility.Collapsed;
+            def.Visibility = Visibility.Collapsed;
             learnG.Visibility = Visibility.Collapsed;
-            addUnitTopicG.Visibility = Visibility.Collapsed;
         }
     }
 }

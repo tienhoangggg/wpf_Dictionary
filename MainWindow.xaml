@@ -22,16 +22,13 @@
                 <Grid DockPanel.Dock="Left" Name="Menu" Visibility="Collapsed">
                     <uc:MenuUC></uc:MenuUC>
                 </Grid>
-                <Grid Name="addVocabulary" Visibility="Collapsed">
+                <Grid Name="addVocabulary">
                     <uc:addVocabularyUC></uc:addVocabularyUC>
                 </Grid>
                 <Grid Name="learn" Visibility="Collapsed">
                     <uc:learnUC></uc:learnUC>
                 </Grid>
-                <Grid Name="dictionary">
-                    <uc:dictionaryUC></uc:dictionaryUC>
-                </Grid>
-                <Grid Name="addUnitTopic" Visibility="Collapsed">
+                <Grid Name="define" Visibility="Collapsed">
                     <uc:defineUC></uc:defineUC>
                 </Grid>
             </DockPanel>

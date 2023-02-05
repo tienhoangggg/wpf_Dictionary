@@ -14,11 +14,8 @@
         <Button Content="Learn"
                 Command="{Binding learn}"
                 CommandParameter="{Binding ElementName=ucMenu}"/>
-        <Button Content="Dictionary"
-                Command="{Binding dictionary}"
-                CommandParameter="{Binding ElementName=ucMenu}"/>
-        <Button Content="Add Unit+Topic"
-                Command="{Binding addUnitTopic}"
+        <Button Content="define"
+                Command="{Binding define}"
                 CommandParameter="{Binding ElementName=ucMenu}"/>
     </StackPanel>
 </UserControl>
